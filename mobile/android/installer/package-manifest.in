@@ -66,6 +66,7 @@
 #endif
 
 @BINPATH@/@DLL_PREFIX@ipcclientcerts@DLL_SUFFIX@
+@BINPATH@/@DLL_PREFIX@osclientcerts@DLL_SUFFIX@
 
 #ifndef MOZ_FOLD_LIBS
 @BINPATH@/@DLL_PREFIX@mozsqlite3@DLL_SUFFIX@

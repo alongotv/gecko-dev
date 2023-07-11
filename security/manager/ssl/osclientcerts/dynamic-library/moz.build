@@ -6,8 +6,8 @@
 
 USE_LIBS += ["osclientcerts-static"]
 
-UNIFIED_SOURCES += [
-    "stub.cpp",
+SOURCES += [
+    "stub.c",
 ]
 
 if CONFIG["OS_ARCH"] == "WINNT":
@@ -28,6 +28,18 @@ if CONFIG["OS_ARCH"] == "WINNT":
             "synchronization",
         ]
 
+# This is a *hack* designed specifically for this library (I found no other ways around):
+# it allows to expose external C functions of static Rust library
+# when compiling for Linux targets (see comment in ipcclientcerts/dynamic-library/stub.c).
+if CONFIG["OS_ARCH"] == "Linux" and CONFIG["OS_TARGET"] == "Android":
+    # The absolute path to static rust .a library should be wrapped with
+    # these flags in the final compile command for the linking to work
+    LDFLAGS += ["-Wl,--whole-archive"]
+    EXTRA_DSO_LDOPTS += ["-Wl,--no-whole-archive"]
+
+if CONFIG["OS_TARGET"] == "Android":
+    OS_LIBS += ["m"]
+
 if CONFIG["OS_ARCH"] == "Darwin":
     OS_LIBS += [
         "-framework CoreFoundation",
@@ -37,4 +49,8 @@ if CONFIG["OS_ARCH"] == "Darwin":
 SharedLibrary("osclientcerts")
 
 NoVisibilityFlags()
-SYMBOLS_FILE = "osclientcerts.symbols"
+
+if CONFIG["OS_TARGET"] == "Android":
+    SYMBOLS_FILE = "osclientcerts_android.symbols"
+else:
+    SYMBOLS_FILE = "osclientcerts.symbols"

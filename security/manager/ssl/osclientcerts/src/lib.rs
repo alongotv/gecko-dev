@@ -23,6 +23,9 @@ extern crate rsclientcerts;
 extern crate sha2;
 #[cfg(target_os = "windows")]
 extern crate winapi;
+#[macro_use]
+#[cfg(target_os = "android")]
+extern crate android_logger;
 
 use pkcs11_bindings::*;
 use rsclientcerts::manager::{ManagerProxy, SlotType};
@@ -34,11 +37,15 @@ use std::thread;
 mod backend_macos;
 #[cfg(target_os = "windows")]
 mod backend_windows;
+#[cfg(target_os = "android")]
+mod backend_android;
 
 #[cfg(any(target_os = "macos", target_os = "ios"))]
 use crate::backend_macos::Backend;
 #[cfg(target_os = "windows")]
 use crate::backend_windows::Backend;
+#[cfg(target_os = "android")]
+use crate::backend_android::Backend;
 
 struct ModuleState {
     manager_proxy: ManagerProxy,

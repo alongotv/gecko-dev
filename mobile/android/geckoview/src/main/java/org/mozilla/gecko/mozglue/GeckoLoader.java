@@ -18,6 +18,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import org.mozilla.gecko.ClientCertificates;
 import org.mozilla.gecko.GeckoAppShell;
 import org.mozilla.gecko.annotation.JNITarget;
 import org.mozilla.gecko.annotation.RobocopTarget;
@@ -239,8 +240,14 @@ public final class GeckoLoader {
 
     loadMozGlue(context);
     loadLibsSetupLocked(context);
+    loadOSClientCertsLib(context);
     loadNSSLibsNative();
     sNSSLibsLoaded = true;
+  }
+
+  public static synchronized void loadOSClientCertsLib(final Context context) {
+    doLoadLibrary(context, "osclientcerts");
+    ClientCertificates.initialize();
   }
 
   @SuppressWarnings("deprecation")

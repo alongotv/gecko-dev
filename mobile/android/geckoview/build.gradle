@@ -238,6 +238,8 @@ dependencies {
     implementation ComponentsDependencies.androidx_lifecycle_common
     implementation ComponentsDependencies.androidx_lifecycle_process
 
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.75'
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.75'
     if (mozconfig.substs.MOZ_ANDROID_HLS_SUPPORT) {
         implementation project(":exoplayer2")
     }

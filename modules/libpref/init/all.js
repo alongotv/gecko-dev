@@ -21,7 +21,12 @@
 
 pref("security.tls.insecure_fallback_hosts", "");
 
-pref("security.default_personal_cert",   "Ask Every Time");
+#if defined(ANDROID)
+  // Android does not support picking personal certificates outside of system activity
+  pref("security.default_personal_cert",   "Select Automatically");
+#else
+  pref("security.default_personal_cert",   "Ask Every Time");
+#endif
 pref("security.remember_cert_checkbox_default_setting", true);
 
 // This preference controls what signature algorithms are accepted for signed

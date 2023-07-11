@@ -9,7 +9,7 @@
 # AArch64
 if (CONFIG["OS_ARCH"] == "WINNT" and CONFIG["TARGET_CPU"] != "aarch64") or CONFIG[
     "OS_ARCH"
-] == "Darwin":
+] == "Darwin" or CONFIG["MOZ_WIDGET_TOOLKIT"] == "android":
     DIRS += ["osclientcerts"]
 
 DIRS += ["ipcclientcerts"]

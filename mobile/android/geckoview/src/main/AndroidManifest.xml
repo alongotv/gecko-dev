@@ -85,6 +85,11 @@
                 android:isolatedProcess="false"
                 android:process=":ipdlunittest">
         </service>
+        <activity
+            android:name="org.mozilla.gecko.GeckoCertificateAliasPickerActivity"
+            android:enabled="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
 
 </manifest>

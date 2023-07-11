@@ -931,6 +931,11 @@ who = "Mike Hommey <mh+mozilla@glandium.org>"
 criteria = "safe-to-deploy"
 delta = "0.15.2 -> 0.15.3"
 
+[[audits.cesu8]]
+who = "Vladimir Vetrov <pdastore1@gmail.com>"
+criteria = "safe-to-deploy"
+version = "1.1.0"
+
 [[audits.cc]]
 who = "Mike Hommey <mh+mozilla@glandium.org>"
 criteria = "safe-to-deploy"
@@ -977,6 +982,11 @@ delta = "0.2.0 -> 0.2.2"
 who = "Mike Hommey <mh+mozilla@glandium.org>"
 criteria = "safe-to-deploy"
 delta = "0.2.2 -> 0.2.4"
+
+[[audits.combine]]
+who = "Vladimir Vetrov <pdastore1@gmail.com>"
+criteria = "safe-to-deploy"
+version = "4.6.6"
 
 [[audits.comedy]]
 who = "Nick Alexander <nalexander@mozilla.com>"
@@ -2435,6 +2445,16 @@ delta = "1.0.2 -> 1.0.3"
 who = "Mike Hommey <mh+mozilla@glandium.org>"
 criteria = "safe-to-deploy"
 delta = "1.0.3 -> 1.0.5"
+
+[[audits.jni]]
+who = "Vladimir Vetrov <pdastore1@gmail.com>"
+criteria = "safe-to-deploy"
+version = "0.20.0"
+
+[[audits.jni-sys]]
+who = "Vladimir Vetrov <pdastore1@gmail.com>"
+criteria = "safe-to-deploy"
+version = "0.3.0"
 
 [[audits.jobserver]]
 who = "Mike Hommey <mh+mozilla@glandium.org>"
